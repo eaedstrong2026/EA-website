@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 210 29% 24%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 29% 24%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 29% 24%;
+    --primary: 199 100% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 168 43% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 43 65% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 82%;
+    --input: 0 0% 95%;
+    --ring: 168 43% 50%;
+    --radius: 0.625rem;
+
+    /* Custom design tokens */
+    --cream: #F5F1EB;
+    --cream-dark: #EDE8DF;
+    --navy: #1B2A3C;
+    --navy-light: #243649;
+    --teal: #3D8B7A;
+    --gold: #C9A84C;
+    --gold-light: #D4B760;
+    --text-body: #4A4A4A;
+    --text-muted: #8A8A8A;
+    --border-light: #E5E0D8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Barlow', 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    color: var(--text-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Noto Serif', 'Georgia', serif;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--navy);
+  }
+
+  ::selection {
+    background-color: var(--teal);
+    color: white;
+  }
+}
+
+@layer components {
+  /* Section label - small uppercase teal text above headings */
+  .section-label {
+    @apply font-sans font-semibold text-xs uppercase tracking-[0.2em] mb-4;
+    color: var(--teal);
+  }
+
+  /* Section heading - large bold serif */
+  .section-heading {
+    @apply font-serif text-4xl md:text-5xl max-md:text-3xl;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+  }
+
+  /* Primary button - pill style with border */
+  .btn-pill {
+    @apply inline-flex items-center justify-center px-8 py-3 font-sans font-semibold text-sm rounded-full transition-all duration-300;
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    background: transparent;
+  }
+
+  .btn-pill:hover {
+    background: var(--navy);
+    color: white;
+  }
+
+  /* Filled pill button */
+  .btn-pill-filled {
+    @apply inline-flex items-center justify-center px-8 py-3 font-sans font-semibold text-sm rounded-full transition-all duration-300;
+    background: var(--navy);
+    color: white;
+    border: 1.5px solid var(--navy);
+  }
+
+  .btn-pill-filled:hover {
+    background: transparent;
+    color: var(--navy);
+  }
+
+  /* Section padding */
+  .section-p {
+    @apply py-24 md:py-20 max-md:py-16;
+  }
+
+  /* Container */
+  .container-s {
+    @apply max-w-[1200px] mx-auto px-6 md:px-8;
+  }
+
+  /* Subtle card */
+  .card-subtle {
+    @apply bg-white rounded-lg p-8;
+    border: 1px solid var(--border-light);
+  }
+
+  /* Form input - dark variant */
+  .input-dark {
+    @apply w-full bg-white/10 border border-white/20 rounded-lg px-5 py-3.5 font-sans text-sm text-white placeholder:text-white/40 transition-all duration-200 outline-none;
+  }
+
+  .input-dark:focus {
+    border-color: var(--teal);
+    background: white/15;
+  }
+
+  /* Form input - light variant */
+  .input-light {
+    @apply w-full bg-transparent border rounded-lg px-5 py-3.5 font-sans text-sm outline-none transition-all duration-200;
+    border-color: var(--border-light);
+    color: var(--text-body);
+  }
+
+  .input-light:focus {
+    border-color: var(--teal);
+  }
+
+  .input-light::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+/* Floating animation for geometric shapes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-12px) translateX(6px);
+  }
+  50% {
+    transform: translateY(-6px) translateX(-4px);
+  }
+  75% {
+    transform: translateY(-18px) translateX(3px);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
