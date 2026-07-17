@@ -187,9 +187,12 @@ export default function Hero() {
           { s: 46, l: '70%', t: '50%', d: 2.2, dur: 11, o: 0.52, img: '/images/apple-teal.png' },
           { s: 26, l: '90%', t: '30%', d: 0.9, dur: 9, o: 0.42, img: '/images/apple-teal.png' },
           { s: 34, l: '35%', t: '68%', d: 1.6, dur: 10, o: 0.48, img: '/images/apple-teal.png' },
-          { s: 24, l: '50%', t: '55%', d: 2.8, dur: 8, o: 0.40, img: '/images/apple-gold.png' },
-          { s: 18, l: '80%', t: '20%', d: 0.7, dur: 10, o: 0.35, img: '/images/apple-gold.png' },
-          { s: 22, l: '25%', t: '88%', d: 1.3, dur: 9, o: 0.38, img: '/images/apple-gold.png' },
+          { s: 26, l: '50%', t: '55%', d: 2.8, dur: 8, o: 0.40, img: '/images/apple-gold.png' },
+          { s: 20, l: '80%', t: '20%', d: 0.7, dur: 10, o: 0.35, img: '/images/apple-gold.png' },
+          { s: 24, l: '25%', t: '88%', d: 1.3, dur: 9, o: 0.38, img: '/images/apple-gold.png' },
+          { s: 28, l: '65%', t: '35%', d: 0.5, dur: 10, o: 0.42, img: '/images/apple-gold.png' },
+          { s: 32, l: '10%', t: '60%', d: 2.0, dur: 9, o: 0.45, img: '/images/apple-gold.png' },
+          { s: 20, l: '75%', t: '75%', d: 1.0, dur: 11, o: 0.36, img: '/images/apple-gold.png' },
         ].map((sh, i) => (
           <img key={i} src={sh.img} alt="" className="absolute" style={{
             width: sh.s, height: sh.s, left: sh.l, top: sh.t, opacity: sh.o,
