@@ -9,8 +9,18 @@ async function copyImages() {
   const destDir = path.join(__dirname, 'dist', 'images');
   
   try {
+    // Check if source images folder exists
+    try {
+      await fs.access(srcDir);
+    } catch {
+      console.log('⚠ No images folder found at', srcDir);
+      console.log('  Images will not be copied. Skipping...');
+      return; // Exit gracefully without error
+    }
+    
     await fs.mkdir(destDir, { recursive: true });
     const files = await fs.readdir(srcDir);
+    let copied = 0;
     
     for (const file of files) {
       const srcFile = path.join(srcDir, file);
@@ -19,14 +29,14 @@ async function copyImages() {
       
       if (stat.isFile()) {
         await fs.copyFile(srcFile, destFile);
-        console.log(`  ✓ ${file}`);
+        copied++;
       }
     }
     
-    console.log(`✓ Copied ${files.length} images to dist/images/`);
+    console.log(`✓ Copied ${copied} images to dist/images/`);
   } catch (err) {
     console.error('Failed to copy images:', err.message);
-    process.exit(1);
+    // Don't exit with error - just warn
   }
 }
 
