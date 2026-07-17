@@ -58,21 +58,18 @@ function FloatingNetwork() {
       ctx.clearRect(0, 0, dimensions.w, dimensions.h)
       const nodes = nodesRef.current
 
-      // Update positions with gentle floating drift
       nodes.forEach(n => {
         const driftX = Math.sin(time + n.id * 1.3) * 30
         const driftY = Math.cos(time * 0.7 + n.id * 0.9) * 25
         n.x = n.baseX + driftX + n.vx * time * 10
         n.y = n.baseY + driftY + n.vy * time * 10
 
-        // Wrap around edges
         if (n.x < -50) n.baseX += dimensions.w + 100
         if (n.x > dimensions.w + 50) n.baseX -= dimensions.w + 100
         if (n.y < -50) n.baseY += dimensions.h + 100
         if (n.y > dimensions.h + 50) n.baseY -= dimensions.h + 100
       })
 
-      // Draw connections between nearby nodes
       ctx.strokeStyle = 'rgba(27, 42, 60, 0.15)'
       ctx.lineWidth = 0.8
       for (let i = 0; i < nodes.length; i++) {
@@ -91,7 +88,6 @@ function FloatingNetwork() {
         }
       }
 
-      // Draw triangular fills where 3 nodes are close
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           for (let k = j + 1; k < nodes.length; k++) {
@@ -117,21 +113,17 @@ function FloatingNetwork() {
         }
       }
 
-      // Draw nodes
       nodes.forEach(n => {
-        // Outer glow
         ctx.beginPath()
         ctx.arc(n.x, n.y, 5, 0, Math.PI * 2)
         ctx.fillStyle = 'rgba(27, 42, 60, 0.08)'
         ctx.fill()
 
-        // Main dot
         ctx.beginPath()
         ctx.arc(n.x, n.y, 2.2, 0, Math.PI * 2)
         ctx.fillStyle = 'rgba(27, 42, 60, 0.5)'
         ctx.fill()
 
-        // Bright center
         ctx.beginPath()
         ctx.arc(n.x, n.y, 1, 0, Math.PI * 2)
         ctx.fillStyle = 'rgba(27, 42, 60, 0.85)'
@@ -167,10 +159,8 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#F5F1EB' }}>
-      {/* Floating network dots with shifting triangles */}
       <FloatingNetwork />
 
-      {/* Static network pattern SVG as subtle base layer */}
       <div className="absolute inset-0 opacity-[0.06]">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
           <defs>
@@ -182,7 +172,6 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Floating accent apples */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true" style={{ zIndex: 2 }}>
         {[
           { s: 48, l: '8%', t: '10%', d: 0, dur: 9, o: 0.55, img: '/images/apple-navy.png' },
@@ -209,4 +198,22 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Content
+      <div className="relative z-10 container-s text-center pt-24 pb-20">
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="section-label justify-center flex">
+          Educational Consulting
+        </motion.p>
+        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.7, delay: 0.2 }} className="font-serif text-6xl md:text-7xl lg:text-[90px] text-navy leading-[0.95] mb-6">
+          Empowering<br />Schools
+        </motion.h1>
+        <motion.p initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.4 }} className="font-sans text-base text-body max-w-[540px] mx-auto mb-10 leading-relaxed">
+          With over 25 years of combined experience, Educators Alliance has partnered with schools to strengthen instructional initiatives, boost operational efficiency, and foster meaningful community engagement.
+        </motion.p>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.5 }}>
+          <a href="#about" onClick={handleExplore} className="btn-pill">
+            Explore Our Approach
+          </a>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
