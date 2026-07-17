@@ -151,10 +151,18 @@
 
 /* Floating animation for geometric shapes */
 @keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  25% { transform: translateY(-35px) translateX(18px); }
-  50% { transform: translateY(-18px) translateX(-12px); }
-  75% { transform: translateY(-45px) translateX(10px); }
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  25% {
+    transform: translateY(-50px) translateX(25px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-25px) translateX(-18px) scale(0.95);
+  }
+  75% {
+    transform: translateY(-60px) translateX(15px) scale(1.05);
+  }
 }
 
 /* Reduced motion */
