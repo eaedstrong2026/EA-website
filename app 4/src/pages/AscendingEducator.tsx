@@ -3,134 +3,406 @@ import { useRef } from 'react'
 import { Link } from 'react-router'
 import PageLayout from '../sections/PageLayout'
 
-const pillars = [
-  {
-    title: 'Healing the Spirit',
-    desc: 'A safe space to process, reflect, and begin the journey of deep healing with trauma-informed support designed specifically for educators.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Rising in Power',
-    desc: 'Professional guidance and peer community to help rebuild confidence, reclaim identity, and rise above past challenges with elevated strength.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 3l7.5-7.5 7.5 7.5" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Customized Ascending Plan',
-    desc: 'Your personalized pathway to re-enter the professional world with strength, clarity, and upward momentum through a collective vision of renewal.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-      </svg>
-    ),
-  },
-]
+/* ------------------------------------------------------------------ */
+/*  Who We Serve                                                       */
+/* ------------------------------------------------------------------ */
+function WhoWeServe() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
 
+  const groups = [
+    {
+      title: 'Educators of Color',
+      desc: 'We support educators from historically underrepresented communities who are navigating barriers to opportunity, advancement, and leadership while bringing invaluable perspectives and experiences to the profession.',
+    },
+    {
+      title: 'Women in Education',
+      desc: 'We empower women educators who carry the weight of leadership, caregiving, and service, often while overcoming professional and personal obstacles along the way.',
+    },
+    {
+      title: 'Justice-Impacted Educators',
+      desc: 'We stand beside educators seeking a second chance, supporting those navigating workforce reentry, licensure challenges, or employment barriers related to prior legal-system involvement.',
+    },
+    {
+      title: 'Educators Rebuilding Their Careers',
+      desc: 'Whether impacted by burnout, workplace injustice, career interruption, or life circumstances, we help educators rediscover their strengths and take the next step forward.',
+    },
+  ]
+
+  return (
+    <section className="section-p" style={{ backgroundColor: '#F5F1EB' }} ref={ref}>
+      <div className="container-s">
+        <p className="section-label">Who Belongs</p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="section-heading mb-6"
+        >
+          Who Belongs to The Ascending Educator Alliance
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="font-sans text-[15px] text-body max-w-[700px] mb-10"
+        >
+          At <strong>The Ascending Educator</strong>, we believe that a setback should never define an educator&apos;s future. We serve educators who have faced personal, professional, educational, or legal-system challenges and are ready to reclaim their purpose, restore their confidence, and continue making a difference in the lives of others.
+        </motion.p>
+
+        <div className="grid sm:grid-cols-2 gap-5">
+          {groups.map((group, index) => (
+            <motion.div
+              key={group.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="rounded-lg p-6 bg-white"
+              style={{ border: '1px solid var(--border-light)' }}
+            >
+              <h4 className="font-serif text-lg text-navy mb-3">{group.title}</h4>
+              <p className="font-sans text-[14px] text-body leading-relaxed">{group.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ */
+/*  How We Support                                                     */
+/* ------------------------------------------------------------------ */
+function HowWeSupport() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const supports = [
+    'Advocacy and professional guidance',
+    'Certification and licensure support',
+    'Career coaching and workforce reentry resources',
+    'Mentorship and leadership development',
+    'Wellness and restorative support services',
+    'Community connection and networking opportunities',
+  ]
+
+  return (
+    <section className="section-p bg-white" ref={ref}>
+      <div className="container-s">
+        <p className="section-label">Our Support</p>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="section-heading mb-10"
+        >
+          How We Support Educators
+        </motion.h2>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {supports.map((item, index) => (
+            <motion.div
+              key={item}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.15 + index * 0.08 }}
+              className="flex items-start gap-3 p-5 rounded-lg"
+              style={{ border: '1px solid var(--border-light)' }}
+            >
+              <div className="w-6 h-6 rounded-full bg-teal/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg className="w-3.5 h-3.5 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <span className="font-sans text-[14px] text-body">{item}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ */
+/*  Ascension Boxes                                                    */
+/* ------------------------------------------------------------------ */
+function AscensionBoxes() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const boxes = [
+    {
+      title: '"Rise Beyond Adversity"',
+      desc: 'The Ascending Educator is an advocacy and sanctuary community where justice-impacted educators are welcomed with compassion, dignity, and understanding. We provide a supportive environment where individuals can reflect on their experiences, find encouragement, and begin the journey toward emotional and personal wellness. Here, healing starts with being seen, heard, and valued.',
+      icon: '🌱',
+    },
+    {
+      title: '"Restore What Matters"',
+      desc: 'We believe that life\'s challenges do not diminish an educator\'s worth, potential, or calling. Through trauma-informed practices, mentorship, and access to meaningful resources, participants are empowered to rebuild their sense of self, strengthen their resilience, and restore trust in their professional future. This is a place where growth replaces limitations and possibilities replaces uncertainty.',
+      icon: '🤝',
+    },
+    {
+      title: '"Step Into Your Next Chapter"',
+      desc: 'As educators regain confidence and clarity, they are supported in rediscovering their strengths and professional aspirations. Through connections with peers, specialists, and educational advocates, participants are encouraged to move forward with renewed direction and a deeper sense of purpose. Because every educator has something valuable to contribute, and their journey continues beyond adversity.',
+      icon: '🎯',
+    },
+    {
+      title: '"Ascend with Clarity and Direction"',
+      desc: 'A cornerstone of the program is the Customized Ascending Plan (CAP), a personalized roadmap designed to support each educator\'s unique path forward. Through goal setting, strategic planning, and individualized support, the CAP helps participants identify opportunities, navigate barriers, and create a clear plan for professional growth. This tailored approach equips educators to re-enter the workforce with confidence, focus, and momentum.',
+      icon: '🗺️',
+    },
+  ]
+
+  return (
+    <section className="section-p" style={{ backgroundColor: '#F5F1EB' }} ref={ref}>
+      <div className="container-s">
+        <div className="max-w-[800px] mb-12">
+          <p className="section-label">Your Journey</p>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="section-heading mb-6"
+          >
+            Your Ascension Starts Here
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="font-sans text-[15px] text-body leading-[1.8]"
+          >
+            Every educator&apos;s path is unique, but no one should have to navigate it alone. Through advocacy, restoration, mentorship, and personalized support, The Ascending Educator provides a pathway for justice-impacted educators to heal, rebuild, and move forward with renewed purpose and confidence.
+          </motion.p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-6">
+          {boxes.map((box, index) => (
+            <motion.div
+              key={box.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="rounded-lg p-8 bg-white"
+              style={{ border: '1px solid var(--border-light)' }}
+            >
+              <div className="text-4xl mb-4">{box.icon}</div>
+              <h3 className="font-serif text-xl text-navy mb-4">{box.title}</h3>
+              <p className="font-sans text-[14px] text-body leading-relaxed">{box.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <p className="font-serif text-xl text-navy italic mb-8">
+            Rise with clarity. Return with confidence. Reclaim what still belongs to you.
+          </p>
+          <Link to="/apply" className="btn-pill-filled">
+            Get Ready to Ascend
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+/* ------------------------------------------------------------------ */
+/*  Page                                                               */
+/* ------------------------------------------------------------------ */
 export default function AscendingEducator() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <PageLayout
-      title="The Ascending Educator"
-      subtitle="Reclaiming Purpose. Restoring Hope."
-      heroImage="/images/tab-ascending.jpg"
-      heroAlt="Diverse educators in a supportive circle, warm healing environment with bookshelves and natural light"
-    >
-      {/* Sanctuary */}
-      <section className="section-p bg-white" ref={ref}>
-        <div className="container-s">
-          <div className="max-w-[800px]">
-            <p className="section-label">A Sanctuary for Educators</p>
+    <>
+      <PageLayout
+        title="The Ascending Educator"
+        subtitle="Reclaiming Purpose. Restoring Hope."
+        heroImage="/images/tab-ascending.jpg"
+        heroAlt="Sunrise representing new beginnings for educators"
+      >
+        {/* Introduction */}
+        <section className="section-p bg-white" ref={ref}>
+          <div className="container-s">
+            <div className="max-w-[850px]">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-sans text-sm text-teal font-semibold uppercase tracking-wider mb-6"
+              >
+                An Advocacy and Sanctuary Community for Educators
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.15 }}
+                className="font-sans text-sm text-navy/60 font-semibold uppercase tracking-wider mb-8"
+              >
+                A Signature Initiative of Educators&apos; Alliance
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="font-sans text-[16px] text-body leading-[1.8] mb-6"
+              >
+                The Ascending Educator was founded to provide advocacy, restoration, and professional renewal opportunities for justice-impacted educators. As the social-impact arm of Educators&apos; Alliance, this initiative supports educators through healing-centered services, personalized guidance, mentorship, workforce reentry support, and community engagement.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.25 }}
+                className="font-sans text-[15px] text-body leading-[1.8] mb-6"
+              >
+                The Ascending Educator is a restorative support and advocacy initiative designed to empower <strong>justice-impacted educators</strong> as they navigate healing, professional renewal, and workforce reentry. We provide a compassionate sanctuary community where educators are met with dignity, understanding, and support. Through trauma-informed practices, mentorship, strategic guidance, and meaningful community connections, participants are equipped to overcome barriers, rebuild confidence, and move forward with renewed clarity and purpose.
+              </motion.p>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="font-sans text-[15px] text-body leading-[1.8]"
+              >
+                Grounded in the belief that every educator deserves the opportunity to thrive, The Ascending Educator helps participants reclaim their identity, restore hope, and rediscover their professional calling. At the heart of the program is the <strong>Customized Ascending Plan (CAP)</strong>, a personalized roadmap that provides strategic direction for growth, professional advancement, and long-term success. Our commitment is to walk alongside educators with compassion, advocacy, and encouragement, affirming their value while helping them overcome barriers and achieve their goals.
+              </motion.p>
+            </div>
+
+            {/* Mission & Vision */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-16 grid md:grid-cols-2 gap-12"
+            >
+              <div className="rounded-lg p-8" style={{ border: '1px solid var(--border-light)' }}>
+                <p className="section-label">Mission</p>
+                <p className="font-sans text-[15px] text-body leading-[1.8]">
+                  To provide advocacy, support, and restorative pathways that help justice-impacted educators heal, rebuild, and reclaim their purpose.
+                </p>
+              </div>
+              <div className="rounded-lg p-8" style={{ border: '1px solid var(--border-light)' }}>
+                <p className="section-label">Vision</p>
+                <p className="font-sans text-[15px] text-body leading-[1.8]">
+                  To cultivate a future where every justice-impacted educator has the opportunity to rise, lead, and thrive with confidence, dignity, and lasting impact.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Our Commitment */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="mt-16 rounded-lg p-10"
+              style={{ backgroundColor: '#F5F1EB' }}
+            >
+              <h3 className="font-serif text-2xl text-navy mb-6">Our Commitment</h3>
+              <p className="font-sans text-[15px] text-body leading-[1.8] mb-6">
+                We are committed to empowering justice-impacted educators through advocacy, restoration, and personalized support. Through mentorship, community connection, and the Customized Ascending Plan (CAP), we help educators reclaim confidence, restore purpose, and move forward with resilience, hope, and renewed opportunity.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {[
+                  'An educator\'s value is greater than their challenges.',
+                  'Healing and professional growth can happen simultaneously.',
+                  'Every educator deserves advocacy, dignity, and opportunity.',
+                  'Restored educators strengthen schools, communities, and future generations.',
+                  'Resilience should be recognized, supported, and celebrated.',
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-teal/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3 h-3 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    </div>
+                    <span className="font-sans text-[14px] text-body">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Why It Matters */}
+        <section className="section-p" style={{ backgroundColor: '#F5F1EB' }}>
+          <div className="container-s">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.6 }}
+              className="max-w-[800px]"
             >
-              <h2 className="section-heading mb-8">
-                Healing.<br />Restoration.<br />A Return to Purpose.
-              </h2>
-              <p className="font-sans text-[16px] text-body leading-[1.8] mb-6">
-                The Ascending Educator is a dedicated sanctuary and advocacy space for justice-impacted educators who are ready to rise above past challenges, heal deeply, and move steadily upward. This is where compassion meets systemic restoration with your &ldquo;Customized Ascending Plan&rdquo; (CAP) &mdash; and where educators are reminded that their calling, voice, and value remain deeply needed.
+              <p className="section-label">Why It Matters</p>
+              <h2 className="section-heading mb-6">Why The Ascending Educator Alliance Matters</h2>
+              <p className="font-sans text-[15px] text-body leading-[1.8] mb-6">
+                Too often, talented educators face barriers that leave them feeling isolated, discouraged, or disconnected from their calling. The Ascending Educator exists to change that reality.
+              </p>
+              <p className="font-serif text-xl text-navy mb-6">
+                The Ascending Educator exists to change that story.
+              </p>
+              <p className="font-sans text-[15px] text-body leading-[1.8]">
+                We are building a community of advocacy, restoration, and opportunity where educators are not defined by their challenges but empowered by their resilience. Together, we help educators rise beyond barriers, reclaim their voice, and ascend into their next chapter of purpose, leadership, and impact.
               </p>
             </motion.div>
           </div>
+        </section>
 
-          {/* Support for the Journey Ahead */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="max-w-[800px] mt-12 mb-16"
-          >
-            <h3 className="font-serif text-2xl text-navy mb-4">Support for the Journey Ahead</h3>
-            <p className="font-sans text-[15px] text-body leading-[1.8]">
-              Through trauma-informed support, professional guidance, and a powerful community of peers, we help educators rediscover confidence, reclaim identity, and re-enter the professional world with elevated strength. Because the story does not end with hardship; it continues with resilience, upward momentum, and lasting impact.
-            </p>
-          </motion.div>
+        {/* Focus Areas */}
+        <section className="section-p bg-white">
+          <div className="container-s">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="section-label">Focus Areas</p>
+              <h2 className="section-heading mb-10">How We Support Educators</h2>
 
-          {/* Three Pillars */}
-          <div className="grid sm:grid-cols-3 gap-6">
-            {pillars.map((pillar, index) => (
-              <motion.div
-                key={pillar.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="text-center p-8 rounded-lg bg-white"
-                style={{ border: '1px solid var(--border-light)' }}
-              >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-navy/5 text-navy mb-5">
-                  {pillar.icon}
-                </div>
-                <h3 className="font-serif text-xl text-navy mb-3">{pillar.title}</h3>
-                <p className="font-sans text-[13px] text-body leading-relaxed">{pillar.desc}</p>
-              </motion.div>
-            ))}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {[
+                  { title: 'Healing & Wellness', desc: 'Trauma-informed support designed specifically for educators seeking restoration.' },
+                  { title: 'Professional Restoration', desc: 'Rebuild confidence, reclaim identity, and restore your professional standing.' },
+                  { title: 'Workforce Reentry Support', desc: 'Guidance and resources for returning to the education profession with strength.' },
+                  { title: 'Mentorship & Advocacy', desc: 'Connect with experienced advocates who understand your journey and champion your success.' },
+                  { title: 'Customized Ascending Plans (CAP)', desc: 'Your personalized roadmap for growth, renewal, and professional advancement.' },
+                ].map((area, index) => (
+                  <motion.div
+                    key={area.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    className="rounded-lg p-6"
+                    style={{ border: '1px solid var(--border-light)' }}
+                  >
+                    <h4 className="font-serif text-lg text-navy mb-2">{area.title}</h4>
+                    <p className="font-sans text-[13px] text-body leading-relaxed">{area.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
+        </section>
 
-          {/* Quote */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="mt-16 text-center max-w-[600px] mx-auto"
-          >
-            <p className="font-serif text-2xl md:text-3xl text-navy leading-snug mb-4">
-              &ldquo;Rise with clarity. Return with confidence. Reclaim what still belongs to you.&rdquo;
-            </p>
-            <p className="font-sans text-sm text-teal font-semibold uppercase tracking-wider">
-              Welcome back to the Alliance
-            </p>
-          </motion.div>
-
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-12 rounded-lg p-10 text-center"
-            style={{ backgroundColor: '#F5F1EB' }}
-          >
-            <h3 className="font-serif text-2xl text-navy mb-4">
-              You Are Not Alone on This Journey
-            </h3>
-            <p className="font-sans text-[15px] text-body max-w-[500px] mx-auto mb-6">
-              If you are ready to heal, rebuild, and re-enter with purpose, Ed-Alliance Ambassadors are ready to climb with you.
-            </p>
-            <Link to="/" onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)} className="btn-pill">
-              Connect With Us
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-    </PageLayout>
+        <WhoWeServe />
+        <HowWeSupport />
+        <AscensionBoxes />
+      </PageLayout>
+    </>
   )
 }
