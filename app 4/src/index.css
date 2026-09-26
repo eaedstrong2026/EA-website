@@ -94,6 +94,19 @@
     color: white;
   }
 
+  /* Outline pill button - same as btn-pill, explicit alias */
+  .btn-pill-outline {
+    @apply inline-flex items-center justify-center px-8 py-3 font-sans font-semibold text-sm rounded-full transition-all duration-300;
+    border: 1.5px solid var(--navy);
+    color: var(--navy);
+    background: transparent;
+  }
+
+  .btn-pill-outline:hover {
+    background: var(--navy);
+    color: white;
+  }
+
   /* Filled pill button */
   .btn-pill-filled {
     @apply inline-flex items-center justify-center px-8 py-3 font-sans font-semibold text-sm rounded-full transition-all duration-300;
@@ -149,7 +162,7 @@
   }
 }
 
-/* Floating animation for geometric shapes */
+/* Floating animation for geometric shapes - dramatic movement */
 @keyframes float {
   0%, 100% {
     transform: translateY(0) translateX(0) scale(1);
