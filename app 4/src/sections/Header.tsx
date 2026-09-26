@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router'
 
-const navTabs = [
-  { label: 'About', href: '/', isHome: true },
-  { label: 'I. Strategic Support', href: '/strategic-support' },
-  { label: 'II. Areas of Expertise', href: '/areas-of-expertise' },
-  { label: 'III. High Quality Organization', href: '/high-quality-organization' },
-  { label: 'IV. EduPreneurs Alliance', href: '/edupreneurs-alliance' },
-  { label: 'V. The Ascending Educator', href: '/ascending-educator' },
+const navItems = [
+  { label: 'Home', href: '/', isHome: true },
+  { label: "About Educators' Alliance", href: '/about' },
+  { label: 'Meet the Founder', href: '/founder' },
+  { label: 'The Ascending Educator', href: '/ascending-educator' },
+  { label: "Educators' Alliance Consulting Services", href: '/consulting-services' },
+  { label: 'Coming Soon: EduPreneurs Alliance', href: '/edupreneurs-alliance' },
+  { label: 'Join "The Alliance"', href: '/join-the-alliance' },
+  { label: 'Apply Now', href: '/apply' },
+  { label: 'Sponsor an Educator', href: '/sponsor' },
 ]
 
 export default function Header() {
@@ -49,33 +52,20 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden xl:flex items-center gap-5">
-            {navTabs.map((tab) => (
+            {navItems.map((item) => (
               <Link
-                key={tab.href}
-                to={tab.href}
-                className={`font-sans text-[12px] font-medium tracking-wide transition-colors pb-0.5 border-b-2 ${
-                  location.pathname === tab.href
+                key={item.href}
+                to={item.href}
+                className={`font-sans text-[11px] font-medium tracking-wide transition-colors pb-0.5 border-b-2 whitespace-nowrap ${
+                  location.pathname === item.href
                     ? 'text-navy border-teal'
                     : 'text-navy/60 border-transparent hover:text-navy hover:border-navy/20'
                 }`}
               >
-                {tab.label}
+                {item.label}
               </Link>
             ))}
           </nav>
-
-          {/* CTA */}
-          <Link
-            to="/"
-            onClick={() => {
-              if (isHome) {
-                setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)
-              }
-            }}
-            className="hidden lg:inline-flex btn-pill-filled text-xs py-2.5 px-5 shrink-0"
-          >
-            Partner With Us
-          </Link>
 
           {/* Mobile toggle */}
           <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden p-2" aria-label="Menu">
@@ -93,30 +83,19 @@ export default function Header() {
         {mobileOpen && (
           <div className="xl:hidden bg-white border-t border-border-light max-h-[70vh] overflow-y-auto">
             <div className="container-s py-3 space-y-0.5">
-              {navTabs.map((tab) => (
+              {navItems.map((item) => (
                 <Link
-                  key={tab.href}
-                  to={tab.href}
+                  key={item.href}
+                  to={item.href}
                   className={`block py-2.5 px-3 rounded-lg font-sans text-sm font-medium transition-colors ${
-                    location.pathname === tab.href
+                    location.pathname === item.href
                       ? 'text-navy bg-cream/50'
                       : 'text-navy/70 hover:text-navy hover:bg-cream/30'
                   }`}
                 >
-                  {tab.label}
+                  {item.label}
                 </Link>
               ))}
-              <div className="pt-2">
-                <Link
-                  to="/"
-                  onClick={() => {
-                    setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100)
-                  }}
-                  className="btn-pill-filled text-xs py-2.5 px-6 inline-block"
-                >
-                  Partner With Us
-                </Link>
-              </div>
             </div>
           </div>
         )}
