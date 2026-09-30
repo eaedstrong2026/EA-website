@@ -55,6 +55,7 @@ export default function AboutPage() {
             </motion.p>
           </div>
 
+          {/* Three Pathways */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -96,6 +97,7 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
+          {/* One Vision */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
