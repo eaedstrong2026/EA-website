@@ -34,7 +34,7 @@ export default function Founder() {
               <div className="mt-6 text-center lg:text-left">
                 <p className="font-serif text-2xl text-navy">Tashika K. Fabian, M.Ed.</p>
                 <p className="font-sans text-sm text-teal font-semibold uppercase tracking-wider mt-1">
-                  Founder & CEO
+                  Social Impact Leader | Master Educator | Educational Consultant | Former Administrator | Motivational Speaker
                 </p>
                 <p className="font-sans text-sm text-text-muted mt-1">
                   Educators&apos; Alliance LLC
@@ -49,10 +49,8 @@ export default function Founder() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="lg:col-span-3 space-y-6"
             >
-              <p className="section-label">Master Educator | Educational Consultant | Former Administrator | Motivational Speaker</p>
-
               <h2 className="section-heading">
-                From Setback to Purpose. From Pain to Impact.
+                Overcoming Unfounded Adversity to Drive Strategic Social Impact.
               </h2>
 
               <p className="font-sans text-[16px] text-body leading-[1.8]">
@@ -99,11 +97,47 @@ export default function Founder() {
             </motion.p>
           </div>
 
-          {/* Quote */}
+          {/* Executive Summary */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-16 rounded-lg p-10 max-w-[850px] mx-auto"
+            style={{ backgroundColor: '#F5F1EB' }}
+          >
+            <h3 className="font-serif text-2xl text-navy mb-4">
+              Empowering Human and Institutional Systems Through Career Restoration, Strategic Consulting, and Entrepreneurial Innovation.
+            </h3>
+            <p className="font-sans text-[15px] text-body leading-[1.8] mb-4">
+              Educators&apos; Alliance was created to address the unique challenges educators face in today&apos;s complex educational landscape. Led by Master Educator, Educational Consultant, and Former Administrator Tashika K. Fabian, M.Ed., the organization brings more than fourteen years of experience in educational leadership, instructional excellence, and community advocacy.
+            </p>
+            <p className="font-sans text-[15px] text-body leading-[1.8] mb-4">
+              The organization operates through three core pathways:
+            </p>
+            <ul className="space-y-2 mb-4 ml-4">
+              <li className="font-sans text-[14px] text-body flex items-start gap-2">
+                <span className="text-teal mt-1">&#9679;</span>
+                <span><strong>The Ascending Educator</strong> — Supporting educators through workforce reentry, professional renewal, and career restoration.</span>
+              </li>
+              <li className="font-sans text-[14px] text-body flex items-start gap-2">
+                <span className="text-teal mt-1">&#9679;</span>
+                <span><strong>Educators&apos; Alliance Consulting Services</strong> — Delivering strategic consulting, leadership development, and organizational transformation for schools and educational institutions.</span>
+              </li>
+              <li className="font-sans text-[14px] text-body flex items-start gap-2">
+                <span className="text-teal mt-1">&#9679;</span>
+                <span><strong>EduPreneurs Alliance</strong> — Empowering educators to transform their expertise into entrepreneurial ventures and innovative opportunities.</span>
+              </li>
+            </ul>
+            <p className="font-sans text-[15px] text-body leading-[1.8]">
+              Through these pathways, Educators&apos; Alliance is committed to restoring careers, strengthening schools, and creating sustainable pathways for educators to thrive.
+            </p>
+          </motion.div>
+
+          {/* Quote */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.6 }}
             className="mt-16 rounded-lg p-10 max-w-[850px] mx-auto"
             style={{ backgroundColor: '#F5F1EB' }}
           >

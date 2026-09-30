@@ -1,6 +1,9 @@
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import PageLayout from '../sections/PageLayout'
+
+const ocblTabs = ['OCBL Model', 'Implementation Structures', 'Eight Essential Elements'] as const
+type OcblTab = typeof ocblTabs[number]
 
 const services = [
   {
@@ -57,6 +60,145 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
   )
 }
 
+function OCBLSection() {
+  const [activeTab, setActiveTab] = useState<OcblTab>('OCBL Model')
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+  const tabContent: Record<OcblTab, React.ReactNode> = {
+    'OCBL Model': (
+      <div className="space-y-8">
+        <p className="font-sans text-[16px] text-body leading-[1.8] max-w-[800px]">
+          The <strong>Open Communication-Based Learning (OCBL) Model</strong> is our signature framework for fostering transparent dialogue, collaborative problem-solving, and inclusive decision-making in educational environments. Developed through years of hands-on leadership and instructional practice, the OCBL Model transforms how schools communicate, collaborate, and achieve results.
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { title: 'Open Dialogue Circles', desc: 'Creating safe spaces for honest communication among stakeholders where every voice is heard and respected.' },
+            { title: 'Collaborative Assessment', desc: 'Joint evaluation processes that include educators, administrators, students, and families in meaningful ways.' },
+            { title: 'Transparent Decision-Making', desc: 'Clear processes for how decisions are made, communicated, and implemented across the organization.' },
+            { title: 'Inclusive Feedback Loops', desc: 'Systems that ensure all voices are heard, valued, and integrated into continuous improvement efforts.' },
+            { title: 'Restorative Practices', desc: 'Approaches that repair harm, rebuild trust, and strengthen relationships across the school community.' },
+            { title: 'Outcome Mapping', desc: 'Clear alignment between communication strategies and measurable results that drive sustainable improvement.' },
+          ].map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+              className="rounded-lg p-6 bg-white"
+              style={{ border: '1px solid var(--border-light)' }}
+            >
+              <h4 className="font-serif text-[16px] text-navy mb-3">{item.title}</h4>
+              <p className="font-sans text-[13px] text-body leading-relaxed">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    ),
+    'Implementation Structures': (
+      <div className="space-y-8">
+        <p className="font-sans text-[16px] text-body leading-[1.8] max-w-[800px]">
+          Successful implementation of the OCBL Model requires intentional structures that support open communication at every level of the organization. Our implementation framework provides schools and districts with a clear roadmap for integrating OCBL principles into daily practice.
+        </p>
+        <div className="grid sm:grid-cols-2 gap-5">
+          {[
+            { title: 'Leadership Alignment', desc: 'Executive and administrative teams model open communication practices, setting the tone for the entire organization through transparent decision-making and visible commitment to inclusive dialogue.' },
+            { title: 'Professional Learning Communities', desc: 'Structured PLC time dedicated to collaborative problem-solving, data review, and shared decision-making ensures that communication practices are embedded into the regular rhythm of school life.' },
+            { title: 'Stakeholder Advisory Councils', desc: 'Cross-representative councils including educators, families, students, and community members provide ongoing input and feedback on school initiatives, policies, and improvement efforts.' },
+            { title: 'Communication Protocols', desc: 'Clear guidelines for how information flows upward, downward, and laterally within the organization ensure that no voice is missed and all perspectives reach decision-makers.' },
+            { title: 'Restorative Meeting Structures', desc: 'Agendas and facilitation techniques designed to build trust, encourage participation, and address conflict constructively transform routine meetings into opportunities for relationship-building.' },
+            { title: 'Digital Collaboration Platforms', desc: 'Technology tools that support asynchronous input, transparent documentation, and accessible participation enable broader engagement beyond traditional meeting structures.' },
+          ].map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.08 }}
+              className="rounded-lg p-6 bg-white"
+              style={{ border: '1px solid var(--border-light)' }}
+            >
+              <h4 className="font-serif text-[16px] text-navy mb-3">{item.title}</h4>
+              <p className="font-sans text-[13px] text-body leading-relaxed">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    ),
+    'Eight Essential Elements': (
+      <div className="space-y-8">
+        <p className="font-sans text-[16px] text-body leading-[1.8] max-w-[800px]">
+          The OCBL Model is built upon eight essential elements that work together to create a culture of open communication, trust, and collaborative excellence. Each element is critical to achieving sustainable transformation.
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            { num: '01', title: 'Psychological Safety', desc: 'Creating environments where stakeholders feel safe to express ideas, concerns, and feedback without fear of retaliation or judgment.' },
+            { num: '02', title: 'Active Listening', desc: 'Developing deep listening skills that go beyond hearing words to understanding intent, emotion, and underlying needs.' },
+            { num: '03', title: 'Shared Language', desc: 'Establishing common terminology and frameworks that ensure clarity, reduce misunderstanding, and align expectations.' },
+            { num: '04', title: 'Reciprocal Respect', desc: 'Building mutual regard among all stakeholders regardless of role, background, or position within the organization.' },
+            { num: '05', title: 'Data Transparency', desc: 'Making relevant information accessible and understandable so decisions are informed by evidence rather than assumption.' },
+            { num: '06', title: 'Accountability Systems', desc: 'Clear expectations and follow-through mechanisms that ensure commitments made in dialogue translate into action.' },
+            { num: '07', title: 'Continuous Reflection', desc: 'Regular opportunities to examine practices, celebrate successes, and identify areas for growth and improvement.' },
+            { num: '08', title: 'Adaptive Responsiveness', desc: 'The capacity to adjust strategies and approaches based on feedback, changing conditions, and emerging needs.' },
+          ].map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.3 + index * 0.06 }}
+              className="rounded-lg p-6 bg-white"
+              style={{ border: '1px solid var(--border-light)' }}
+            >
+              <p className="font-serif text-2xl text-teal/40 mb-2">{item.num}</p>
+              <h4 className="font-serif text-[16px] text-navy mb-3">{item.title}</h4>
+              <p className="font-sans text-[13px] text-body leading-relaxed">{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    ),
+  }
+
+  return (
+    <section className="section-p bg-white" ref={ref}>
+      <div className="container-s">
+        <p className="section-label">Our Framework</p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <h2 className="section-heading mb-4">The OCBL Model</h2>
+        </motion.div>
+
+        {/* Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-wrap gap-2 mb-10 border-b border-border-light pb-1"
+        >
+          {ocblTabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`pb-3 px-4 font-sans text-[12px] sm:text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 whitespace-nowrap ${
+                activeTab === tab ? 'text-navy border-teal' : 'text-navy/50 border-transparent hover:text-navy'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Tab Content */}
+        <motion.div key={activeTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+          {tabContent[activeTab]}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
 const expertiseAreas = [
   {
     title: 'Strategic Leadership for Growth and Impact',
@@ -100,6 +242,7 @@ export default function ConsultingServices() {
       heroImage="/images/tab-strategic-support.jpg"
       heroAlt="Diverse team of education consultants reviewing strategic plans"
     >
+      {/* Overview */}
       <section className="section-p bg-white">
         <div className="container-s">
           <p className="section-label">Our Approach</p>
@@ -121,6 +264,7 @@ export default function ConsultingServices() {
         </div>
       </section>
 
+      {/* Services Grid */}
       <section className="section-p" style={{ backgroundColor: '#F5F1EB' }}>
         <div className="container-s">
           <p className="section-label">What We Offer</p>
@@ -141,7 +285,11 @@ export default function ConsultingServices() {
         </div>
       </section>
 
-      <section className="section-p bg-white" ref={ref}>
+      {/* OCBL Model — Tabbed */}
+      <OCBLSection />
+
+      {/* Areas of Expertise */}
+      <section className="section-p" style={{ backgroundColor: '#F5F1EB' }} ref={ref}>
         <div className="container-s">
           <p className="section-label">Key Competencies</p>
           <motion.h2
@@ -185,7 +333,8 @@ export default function ConsultingServices() {
         </div>
       </section>
 
-      <section className="section-p" style={{ backgroundColor: '#F5F1EB' }}>
+      {/* Outcomes */}
+      <section className="section-p bg-white">
         <div className="container-s">
           <p className="section-label">Outcomes</p>
           <motion.div
