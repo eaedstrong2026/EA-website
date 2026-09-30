@@ -24,7 +24,7 @@ export default function ApplyNow() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="section-heading mb-6"
+                className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-navy mb-6 whitespace-nowrap"
               >
                 Rise With Purpose. Lead With Confidence.
               </motion.h2>
@@ -572,10 +572,10 @@ export default function ApplyNow() {
                         Thank you for considering becoming part of The Ascending Educator community.
                       </p>
                       <div className="space-y-1">
-                        <p className="font-sans text-[13px] text-navy font-semibold">🌱 Rise Beyond Adversity</p>
-                        <p className="font-sans text-[13px] text-navy font-semibold">🤝 Restore What Matters</p>
-                        <p className="font-sans text-[13px] text-navy font-semibold">🎯 Step Into Their Next Chapter</p>
-                        <p className="font-sans text-[13px] text-navy font-semibold">🗺️ Ascend with Clarity and Direction</p>
+                        <p className="font-sans text-[13px] text-navy font-semibold">Rise Beyond Adversity</p>
+                        <p className="font-sans text-[13px] text-navy font-semibold">Restore What Matters</p>
+                        <p className="font-sans text-[13px] text-navy font-semibold">Step Into Their Next Chapter</p>
+                        <p className="font-sans text-[13px] text-navy font-semibold">Ascend with Clarity and Direction</p>
                       </div>
                     </div>
                   </form>

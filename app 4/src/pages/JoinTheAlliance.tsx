@@ -207,12 +207,12 @@ export default function JoinTheAlliance() {
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
                 {[
-                  { title: '🌟 Community Impact', desc: 'Support initiatives that promote advocacy, professional renewal, workforce reentry, leadership development, and educational advancement.' },
-                  { title: '🤝 Meaningful Collaboration', desc: 'Connect with educators, educational leaders, nonprofits, businesses, and community organizations working toward a shared vision of empowerment and transformation.' },
-                  { title: '📈 Enhanced Visibility', desc: 'Gain recognition through partnership spotlights, special events, community initiatives, social media engagement, and promotional opportunities.' },
-                  { title: '🎯 Workforce & Leadership Development', desc: 'Access opportunities to engage with talented educators, emerging leaders, and professionals seeking pathways for growth and advancement.' },
-                  { title: '🌱 Positive Social Impact', desc: 'Demonstrate your organization\'s commitment to educational equity, workforce development, community engagement, and second-chance opportunities.' },
-                  { title: '🏆 Recognition & Appreciation', desc: 'Receive acknowledgment as a community partner helping to create pathways for healing, restoration, and professional success.' },
+                  { title: 'Strategic Social Impact', desc: 'Support initiatives that promote advocacy, professional renewal, workforce reentry, leadership development, and educational advancement.' },
+                  { title: 'Ecosystem Collaboration', desc: 'Connect with educators, educational leaders, nonprofits, businesses, and community organizations working toward a shared vision of empowerment and transformation.' },
+                  { title: 'Enhanced Brand Equity', desc: 'Gain recognition through partnership spotlights, special events, community initiatives, social media engagement, and promotional opportunities.' },
+                  { title: 'Talent & Leadership Pipeline', desc: 'Access opportunities to engage with talented educators, emerging leaders, and professionals seeking pathways for growth and advancement.' },
+                  { title: 'Thought Leadership & Recognition', desc: 'Demonstrate your organization\'s commitment to educational equity, workforce development, community engagement, and second-chance opportunities.' },
+                  { title: 'Corporate & Social Responsibility', desc: 'Receive acknowledgment as a community partner helping to create pathways for healing, restoration, and professional success.' },
                 ].map((item, index) => (
                   <motion.div
                     key={item.title}
